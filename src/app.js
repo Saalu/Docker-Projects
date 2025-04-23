@@ -7,7 +7,7 @@ app.get('/', (req,res) => {
 
 
 const PORT = 3000;
-const HOST = '0.0.0.0'; // Listen on all interface
+const HOST = '0.0.0.0'; 
 
 app.listen(PORT, HOST, () => {
   console.log(`Server running at http://${HOST}:${PORT}/`);

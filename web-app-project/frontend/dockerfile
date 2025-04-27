@@ -1,0 +1,13 @@
+# Stage 1: Build environment
+FROM node:23-alpine as build
+WORKDIR /app
+COPY public/ ./public/
+RUN npm install -g http-server
+
+# Stage 2: Production environment
+FROM node:23-alpine
+WORKDIR /app
+COPY --from=build /app /app
+COPY --from=build /usr/local/bin/http-server /usr/local/bin/http-server
+EXPOSE 8080
+CMD ["http-server", "public", "-p", "8080"]
